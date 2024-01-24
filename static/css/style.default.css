@@ -216,6 +216,13 @@ ul.list-style-none {
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
+.img-framed {
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 2px;
+	filter: drop-shadow(0px 0px 4px #464646);
+	max-height: 280px;
+}
 .pages {
   text-align: center;
 }
@@ -2943,7 +2950,7 @@ fieldset[disabled] .btn-template-primary.active {
   text-decoration: none;
 }
 .navbar-brand img {
-  max-height: 42px;
+  max-height: 110px;
 }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,

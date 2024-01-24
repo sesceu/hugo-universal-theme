@@ -20,7 +20,11 @@
                                 {{ .description | safeHTML }}
                             </div>
                             <div class="col-sm-7">
-                                <img class="img-responsive" src="{{ .image }}" alt="">
+                                {{ if .frame }}
+                                    <img class="img-responsive img-framed" src="{{ .image }}" alt="">
+                                {{ else }}
+                                    <img class="img-responsive" src="{{ .image }}" alt="">
+                                {{ end }}
                             </div>
                         </div>
                     {{ if .href }}
