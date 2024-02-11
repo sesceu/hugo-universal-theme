@@ -1787,7 +1787,7 @@ fieldset[disabled] .btn-template-primary.active {
 .bar {
   position: relative;
   background: var(--primary-accent);
-  padding: 60px 0;
+  padding: 0px 0;
 }
 .bar.background-pentagon {
   background: url('../img/texture-bw.png') center center repeat;
