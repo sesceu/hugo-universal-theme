@@ -1,0 +1,42 @@
+<style>
+    .image-gallery {overflow: auto; margin-left: -1%!important;}
+    .image-gallery li {float: left; display: block; margin: 0 0 1% 1%; width: 19%;}
+    .image-gallery li a {text-align: center; text-decoration: none!important; color: #777;}
+    .image-gallery li a span {display: block; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding: 3px 0;}
+    .image-gallery li a img {width: 100%; display: block;}
+</style>
+
+{{ $dir := string .gallery_dir }}
+{{ $files := slice }}
+{{ $subdirectories := slice }}
+{{ range (readDir (print "/static" $dir)) }}
+  {{ if .IsDir }}
+    {{ $subdirectories = $subdirectories | append . }}
+  {{ else }}
+    {{ $files = $files | append . }}
+  {{ end }}
+{{ end }}
+<ul class="image-gallery">
+  {{ range $files }}
+    {{- $imageurl := printf "%s/%s" $dir .Name -}}
+    {{- $imagetitle := index (split .Name ".") 0 -}}
+    {{ with resources.Get $imageurl }}
+      {{ if eq .MediaType.MainType "image" }}  
+      <li>
+        <a href="{{ (.Fit "1600x1600 q50").Permalink }}" title="{{ $imagetitle }}" class="lightbox-image">
+        <img src="{{ (.Fill "300x300 q50").Permalink }}" alt="{{ $imagetitle }}" title="{{ $imagetitle }}">
+        <span>{{ $imagetitle }}</span>
+        </a>
+      </li>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+</ul>
+
+{{ range $subdirectories }}
+  <div class="image-gallery-dir">
+    <b>{{ .Name }}</b>
+    {{ $path := printf "%s/%s" $dir .Name }}
+    {{ partial "recursive-image-gallery.html" (dict "context" . "gallery_dir" $path) }}
+  </div>
+{{ end }}
