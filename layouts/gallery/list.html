@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+  <head>
+    {{ partial "headers.html" . }}
+    {{ partial "custom_headers.html" . }}
+  </head>
+
+  <body>
+    <div id="all">
+
+        {{ partial "top.html" . }}
+
+        {{ partial "nav.html" . }}
+
+        {{ partial "breadcrumbs.html" . }}
+
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div>
+                          {{ .Content }}
+                        </div>
+
+                    </div>
+
+                    <!-- *** LEFT COLUMN *** -->
+
+                    <div class="col-md-9">
+                        
+                        {{if .Params.gallery_dir }}
+                          {{ $gallery_dir := .Params.gallery_dir }}
+                          {{ partial "recursive-image-gallery.html" (dict "context" . "gallery_dir" .Params.gallery_dir) }}
+                        {{ else }}
+                        <span>The gallery_dir has not been defined in the frontmatter.</span>
+                        {{ end }}
+                    </div>
+                    <!-- /.col-md-9 -->
+
+                    <!-- *** LEFT COLUMN END *** -->
+
+                    <!-- *** RIGHT COLUMN ***
+       _________________________________________________________ -->
+
+                    <div class="col-md-3">
+
+                        <!-- *** MENUS AND WIDGETS *** -->
+
+                        {{ partial "sidebar.html" . }}
+
+                        <!-- *** MENUS AND FILTERS END *** -->
+
+                    </div>
+                    <!-- /.col-md-3 -->
+
+                    <!-- *** RIGHT COLUMN END *** -->
+
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
+
+        {{ partial "footer.html" . }}
+
+    </div>
+    <!-- /#all -->
+
+    {{ partial "scripts.html" . }}
+
+  </body>
+</html>
