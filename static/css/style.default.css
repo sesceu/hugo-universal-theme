@@ -3604,3 +3604,9 @@ a.list-group-item.active > .badge,
 .image-gallery-dir {
   margin-left: 15px;
 }
+
+table td,th {
+  padding-right: 7px;
+  padding-bottom: 7px;
+}
+

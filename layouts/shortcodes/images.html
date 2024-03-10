@@ -19,7 +19,7 @@
   {{ with resources.Get $imageurl }}
   <li>
     <a href="{{ (.Fit "1600x1600 q50").Permalink }}" title="{{ $imagetitle }}" class="lightbox-image">
-      <img src="{{ (.Fill "300x300 q50").Permalink }}" alt="{{ $imagetitle }}" title="{{ $imagetitle }}">
+      <img src="{{ (.Fill "300x300 q50 Center").Permalink }}" alt="{{ $imagetitle }}" title="{{ $imagetitle }}">
       <span>{{ $imagetitle }}</span>
     </a>
   </li>
