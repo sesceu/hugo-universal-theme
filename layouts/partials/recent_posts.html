@@ -26,6 +26,11 @@
                                 {{ else }}
                                 <img src="{{ "img/placeholder.png" | relURL }}" class="img-responsive" alt="">
                                 {{ end }}
+                                {{ if isset .Params "banner_attribution" }}
+                                <p class="license">
+                                    <a href="{{ .Params.banner_attribution }}" target="_blank" ><i class="fab fa-creative-commons"></i> </a>
+                                </p>
+                                {{ end }}
                             </div>
                             <div class="bg"></div>
                             <div class="text">
