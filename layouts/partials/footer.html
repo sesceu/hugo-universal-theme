@@ -9,6 +9,11 @@
 
             <hr class="hidden-md hidden-lg hidden-sm">
 
+            {{ if isset .Site.Params "ad" }}
+
+            {{ .Site.Params.ad | safeHTML }}
+
+            {{ end }}
         </div>
         <!-- /.col-md-4 -->
         {{ end }}
