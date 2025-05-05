@@ -26,11 +26,21 @@
                                 {{ else }}
                                 <img src="{{ "img/placeholder.png" | relURL }}" class="img-responsive" alt="">
                                 {{ end }}
-                                {{ if isset .Params "banner_attribution" }}
+                                {{ if or (isset .Params "banner_attribution") (isset .Params "banner_attribution_text") }}
                                 <p class="license">
-                                    <a href="{{ .Params.banner_attribution }}" target="_blank" ><i class="fab fa-creative-commons"></i> </a>
+                                    {{ if isset .Params "banner_attribution" }}
+                                        <a href="{{ .Params.banner_attribution }}" target="_blank" >
+                                            <i class="fab fa-creative-commons"
+                                               {{ if isset .Params "banner_attribution_text" }}
+                                               title="{{ .Params.banner_attribution_text }}"
+                                               {{ end }}>
+                                            </i>
+                                        </a>
+                                    {{ else if isset .Params "banner_attribution_text" }}
+                                        <i class="fab fa-creative-commons" title="{{ .Params.banner_attribution_text }}"></i>
+                                    {{ end }}
                                 </p>
-                                {{ end }}
+                            {{ end }}
                             </div>
                             <div class="bg"></div>
                             <div class="text">
