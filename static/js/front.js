@@ -1,13 +1,6 @@
 /* global $this: true */
 /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "animationsSlider" }] */
 
-if ($.cookie('themeCSSpath')) {
-  $('link#theme-stylesheet').attr('href', $.cookie('themeCSSpath'))
-}
-if ($.cookie('themeLayout')) {
-  $('body').addClass($.cookie('themeLayout'))
-}
-
 $(function () {
   sliderHomepage()
   sliders()
@@ -19,7 +12,6 @@ $(function () {
   utils()
   animations()
   counters()
-  demo()
   contactFormAjax()
 })
 
@@ -43,39 +35,6 @@ function contactFormAjax () {
   })
 }
 
-/* for demo purpose only - can be deleted */
-function demo () {
-  if ($.cookie('themeCSSpath')) {
-    $('link#theme-stylesheet').attr('href', $.cookie('themeCSSpath'))
-  }
-
-  $('#colour').change(function () {
-    if ($(this).val() !== '') {
-      var themeCSSpath = 'css/style.' + $(this).val() + '.css'
-
-      $('link#theme-stylesheet').attr('href', themeCSSpath)
-
-      $.cookie('themeCSSpath', themeCSSpath, {expires: 365, path: '/'})
-    }
-
-    return false
-  })
-
-  $('#layout').change(function () {
-    if ($(this).val() !== '') {
-      var themeLayout = $(this).val()
-
-      $('body').removeClass('wide')
-      $('body').removeClass('boxed')
-
-      $('body').addClass(themeLayout)
-
-      $.cookie('themeLayout', themeLayout, {expires: 365, path: '/'})
-    }
-
-    return false
-  })
-}
 
 /* slider homepage */
 function sliderHomepage () {
