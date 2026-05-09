@@ -1,11 +1,51 @@
+.box-image-text .top {
+  text-align: center;
+}
+
 .box-image-text .image {
-  min-height: 190px;
-  max-height: 190px;
+  min-height: auto;
+  max-height: none;
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+  vertical-align: top;
 }
 
 .box-image-text .image img {
-  max-height: 190px;
+  max-height: none;
   margin: auto;
+  display: block;
+}
+
+.box-image-text .image .bg {
+  top: 0;
+  bottom: 0;
+  height: auto;
+}
+
+.box-image-text .image .text {
+  top: 0;
+  bottom: 0;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Start above the image */
+  -webkit-transform: translate(0, -100%);
+  transform: translate(0, -100%);
+}
+
+.box-image-text:hover .image .text {
+  /* Stop in the center */
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+/* Ensure the CC logo looks good below the image */
+.box-image-text .license {
+  margin: 5px 0 0;
+  text-align: right;
+  font-size: 12px;
 }
 
 .box-simple {
