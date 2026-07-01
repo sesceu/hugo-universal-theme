@@ -21,9 +21,9 @@
                             </div>
                             <div class="col-sm-7">
                                 {{ if .frame }}
-                                    <img class="img-responsive img-framed" src="{{ .image }}" alt="">
+                                    <img class="img-responsive img-framed" src="{{ .image | relURL }}" alt="">
                                 {{ else }}
-                                    <img class="img-responsive" src="{{ .image }}" alt="">
+                                    <img class="img-responsive" src="{{ .image | relURL }}" alt="">
                                 {{ end }}
                             </div>
                         </div>
